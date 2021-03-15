@@ -6,9 +6,10 @@ class Student{
   final String rollNo;
   final String phoneNumber;
   final String reason;
+  final String emailId;
   DatabaseReference _id;
 
-  Student(this.emailID, this.name, this.phoneNumber, this.reason,this.rollNo);
+  Student(this.emailID, this.name, this.phoneNumber, this.reason,this.rollNo, this.emailId);
 
   void setId(DatabaseReference id){
     this._id=id;
@@ -19,7 +20,8 @@ Map<String,dynamic>toJson(){
       'rollNo':this.rollNo,
       'phoneNumber':this.phoneNumber,
       'name':this.name,
-      'reason':this.reason
+      'reason':this.reason,
+
 
     };
 }
