@@ -14,7 +14,7 @@ class _WardenPageState extends State<WardenPage> {
     // TODO: implement initState
     super.initState();
     DatabaseReference ref=FirebaseDatabase.instance.reference();
-    ref.child('leaveRequest').once().then((DataSnapshot snap){
+    ref.child('Request').once().then((DataSnapshot snap){
       var keys=snap.value.keys;
       var data=snap.value;
       student.clear();
@@ -25,6 +25,7 @@ class _WardenPageState extends State<WardenPage> {
           data[key]['phoneNumber'],
           data[key]['reason'],
           data[key]['rollNo'],
+          data[key]['requestStatus'],
 
         );
         student.add(s);
@@ -47,23 +48,42 @@ class _WardenPageState extends State<WardenPage> {
       appBar: AppBar(
         title: Text("warden"),
       ),
-        body:new Container(
-child: student.length==0?new Text('No data is available'):
-new ListView.builder(
-          itemCount: student.length,
-  itemBuilder: (_,index){
-    return Card(
-      child: ListTile(
-        title: Text('rollNumber: ${student[index].rollNo}'),
-        subtitle:Text('Name: ${student[index].name}') ,
-        onTap: (){
-          Navigator.push(context, new MaterialPageRoute(builder: (context)=>LeaveDetails(student[index])));
-        },
-      ),
+        body:Center(
+          child: new Container(
+child: Center(
+  child:   student.length==0?new CircularProgressIndicator():
 
-    );
+  new ListView.builder(
 
-},),
+              itemCount: student.length,
+
+    itemBuilder: (_,index){
+
+      return Card(
+
+        child: ListTile(
+
+            title: Text('rollNumber: ${student[index].rollNo}'),
+
+            subtitle:Text('Name: ${student[index].name}') ,
+
+            onTap: (){
+
+              Navigator.push(context, new MaterialPageRoute(builder: (context)=>LeaveDetails(student[index])));
+
+            },
+
+        ),
+
+
+
+      );
+
+
+
+  },),
+),
+          ),
         )
 
     );

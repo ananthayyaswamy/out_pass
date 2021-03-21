@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:out_pass/pages/studentpage.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -309,12 +310,15 @@ Future<void> signinUsingGoogle() async{
       if(googleUserCredential!=null){
         print('signed into google');
         String s= googleUserCredential.user.email;
+
         print(s);
         if(s=="ananthayyaswamy@gmail.com"){
           Navigator.pushReplacementNamed(context, '/WardenPage');
         }else {
-          Navigator.pushReplacementNamed(
-              context, '/StudentPage');
+          // Navigator.pushReplacementNamed(
+          //     context, '/StudentPage');
+          //Navigator.pushReplacementNamed(context,'/StudentPage' );
+          Navigator.push(context, new MaterialPageRoute(builder: (context)=>StudentPage()));
       }}
       else{
         print('not signed in');
