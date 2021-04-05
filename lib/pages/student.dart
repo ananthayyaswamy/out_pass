@@ -10,12 +10,15 @@ class Student{
   final String reason;
  // final String emailId;
   bool requestStatus=false;
-  DatabaseReference _id;
+   DatabaseReference _id;
 
   Student(this.emailID, this.rollNo, this.phoneNumber, this.name,this.reason,this.requestStatus);
 
   void setId(DatabaseReference id){
     this._id=id;
+  }
+  DatabaseReference getId(){
+    return _id;
   }
 Map<String,dynamic>toJson(){
     return{
@@ -27,6 +30,6 @@ Map<String,dynamic>toJson(){
       'requestStatus':this.requestStatus
 
 
-    };
-}
+    };}
+
 }

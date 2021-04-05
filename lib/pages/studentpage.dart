@@ -115,7 +115,7 @@ Student st;
  @override
  Widget build(BuildContext context) {
 
-  if(val==false){
+
   return
 
 
@@ -150,16 +150,20 @@ Student st;
           _formKey.currentState.save();
           _formKey.currentState.setState(() {
            st = Student(_email, _roll, _phone, _name, _reason,false);
-           print("step 1");
-           saverequest(st);
-           print("step 2");
 
 
-           val=true;
+
+
+          });
+          setState(() {
 
           });
 setState(() {
+ print("step 1");
+ saverequest(st);
+ print("step 2");
 
+ //Navigator.pushNamed(context, '/neworview');
 });
           // setState(() {
           //  Student st = Student(_email, _roll, _phone, _name, _reason,false);
@@ -177,49 +181,20 @@ setState(() {
           print(_phone);
           print(_reason);
 
-         // Navigator.pushReplacementNamed(context, '/myrequest');
+          Navigator.pushNamed(context, '/studentrequestlist');
          })
        ],
       ),
      ),
     ),
    ),
-  );}
-  else {
-   List<Student> s=getRequests(st);
-   print("hi");
-   setState(() {
-
-   });
-   return Scaffold(
-
-    backgroundColor: Colors.green[100],
-    resizeToAvoidBottomPadding: false,
-    appBar: AppBar(
-     title: Text("my request lists"),
-    ),
-    body: Center(
-     child: new ListView.builder(
-      itemCount: s.length,
-      itemBuilder: (_,index){
-       return Card(
-        child: ListTile(
-         title: Text('reason :${s[index].reason}'),
-         subtitle: Text('status: ${s[index].requestStatus}'),
-         onTap: (){
-          Navigator.push(context, new MaterialPageRoute(builder: (context)=>Requests(s[index])));
-
-         },
-        ),
-       );
-      }
-     ),
-    )
+  );
 
 
-   );
 
 
-  }
+
+
  }
+
 }

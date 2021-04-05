@@ -14,25 +14,28 @@ class _WardenPageState extends State<WardenPage> {
     // TODO: implement initState
     super.initState();
     DatabaseReference ref=FirebaseDatabase.instance.reference();
-    ref.child('Request').once().then((DataSnapshot snap){
+    ref.child('leaveRequest').once().then((DataSnapshot snap){
       var keys=snap.value.keys;
       var data=snap.value;
       student.clear();
       for(var key in keys){
         Student s=new Student(
           data[key]['emailId'],
-          data[key]['name'],
-          data[key]['phoneNumber'],
-          data[key]['reason'],
           data[key]['rollNo'],
+          data[key]['phoneNumber'],
+          data[key]['name'],
+          data[key]['reason'],
           data[key]['requestStatus'],
+
 
         );
         student.add(s);
+        print(s.rollNo+" "+s.name+"  "+s.emailID);
 
       }
       setState(() {
         print('length:${student.length}');
+
 
       });
     });

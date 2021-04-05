@@ -2,8 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:out_pass/pages/homePage.dart';
 import 'package:out_pass/pages/leaveDetails.dart';
+import 'package:out_pass/pages/newrequestOrViewRequests.dart';
 import 'package:out_pass/pages/requests.dart';
 import 'package:out_pass/pages/studentpage.dart';
+import 'package:out_pass/pages/studentrequestlist.dart';
 import 'package:out_pass/pages/wardenpage.dart';
 
 Future<void> main() async {
@@ -15,7 +17,9 @@ Future<void> main() async {
       '/home':(context)=>Home(),
       '/StudentPage':(context)=>StudentPage(),
       '/WardenPage':(context)=>WardenPage(),
-      //'/myrequest':(context)=>Requests(),
+      '/neworview':(context)=>choice(),
+      '/studentrequestlist':(context)=>studentrequestLists(),
+
 
     }
   ));

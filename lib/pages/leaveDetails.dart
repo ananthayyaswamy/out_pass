@@ -130,10 +130,11 @@ child: Column(
 
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Padding(
+
+       Padding(
           padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
           child: Flexible(
-            flex: 1,fit: FlexFit.loose,
+            flex: 2,fit: FlexFit.loose,
             child: Container(
               child: MaterialButton(
                 minWidth: 150.0,
@@ -141,7 +142,9 @@ child: Column(
                 color: Colors.green,
                 child: new Text('Accept',
                     style: new TextStyle(fontSize: 16.0, color: Colors.white)),
-                onPressed: () {},
+                onPressed: () {showAlertDialog(context,"Would you like to accept this request?");
+                print("hi 1");
+                },
               ),
 
             ),
@@ -152,7 +155,7 @@ child: Column(
         Padding(
           padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
           child: Flexible(
-            flex: 1,fit: FlexFit.loose,
+            flex: 2,fit: FlexFit.loose,
             child: Container(
               child: MaterialButton(
                 minWidth: 150.0,
@@ -160,7 +163,9 @@ child: Column(
                 color: Colors.red,
                 child: new Text('Reject',
                     style: new TextStyle(fontSize: 16.0, color: Colors.white)),
-                onPressed: () {},
+                onPressed: () {showAlertDialog(context,"Would you like to reject this request?");
+
+                },
               ),
 
             ),
@@ -177,4 +182,53 @@ child: Column(
       ) ,
     );
   }
+  showAlertDialog(BuildContext context,String text ) {
+
+    // set up the buttons
+    Widget cancelButton = FlatButton(
+      child: Text("Cancel"),
+      onPressed:  () {
+        //getRequestsRoll(rollNo1.toString());
+      },
+    );
+    Widget continueButton = FlatButton(
+      child: Text("Continue"),
+      onPressed:  () {
+        print("hi");
+        Student st = getRequestsRoll(name1.text) as Student;
+        print(st.rollNo.toString() + "hijhihink ");
+
+
+        //print(st);
+       // st.requestStatus = true;
+       // print("value set as true");
+     //   print(st.requestStatus);
+        //updaterequest(st);
+        // print(st.name+" "+st.rollNo);
+        //print("werw" + st.requestStatus.toString());
+      } );
+
+
+
+
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("AlertDialog"),
+      content: Text(text),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
 }
